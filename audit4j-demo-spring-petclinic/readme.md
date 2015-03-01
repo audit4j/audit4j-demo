@@ -1,4 +1,10 @@
-# Spring PetClinic Sample Application
+# Audit4j Integration for Spring PetClinic Sample Application
+
+## Used Audit4j modules:
+
+* Audit4j Core
+* Audit4j Spring Integration
+* Audit4j Database Integration
 
 ## What does it look like?
 -spring-petclinic has been deployed here on cloudfoundry: http://demo-spring-petclinic.cfapps.io/
