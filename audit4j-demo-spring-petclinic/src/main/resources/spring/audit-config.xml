@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Application context definition for PetClinic Datasource. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/jee
+         http://www.springframework.org/schema/jee/spring-jee.xsd
+         http://www.springframework.org/schema/aop 
+		 http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="layout" class="org.audit4j.core.layout.SimpleLayout"></bean>
+	<bean id="metaData"
+		class="org.springframework.samples.petclinic.util.AuditMetaData"></bean>
+	<bean id="consoleAuditHandler" class="org.audit4j.core.handler.ConsoleAuditHandler"></bean>
+	<bean id="databaseAuditHandler" class="org.audit4j.handler.db.DatabaseAuditHandler">
+		<!-- For jndi DB configurations
+		<property name="embedded" value="false"></property> <property name="db_connection_type" 
+			value="pooled"></property> <property name="db_jndi_datasource" value="java:comp/env/jdbc/database"></property> -->
+	</bean>
+	<bean id="auditconfig" class="org.audit4j.integration.spring.SpringAudit4jConfig">
+		<property name="layout" ref="layout"></property>
+		<property name="metaData" ref="metaData"></property>
+		<property name="handlers">
+			<list>
+				<ref bean="consoleAuditHandler" />
+				<ref bean="databaseAuditHandler" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
