@@ -1,4 +1,4 @@
-package com.journaldev.servlet;
+package org.audit4j.demo.http;
 
 import java.io.IOException;
 import java.io.PrintWriter;
