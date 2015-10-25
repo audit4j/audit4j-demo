@@ -19,7 +19,7 @@ public class AuditMetaData implements MetaData{
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return "unidentified";
     }
 
     @Override

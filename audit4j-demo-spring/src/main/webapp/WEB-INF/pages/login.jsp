@@ -36,7 +36,7 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>Spring Security Custom Login Form (Annotation)</h1>
+	<h1>Login</h1>
 
 	<div id="login-box">
 

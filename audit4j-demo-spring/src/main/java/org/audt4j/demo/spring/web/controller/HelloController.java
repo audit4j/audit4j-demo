@@ -19,8 +19,8 @@ public class HelloController {
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is welcome page!");
+		model.addObject("title", "Audit4j demo appilcaition");
+		model.addObject("message", "Please click below link to access demo page.");
 		model.setViewName("hello");
 		return model;
 
@@ -30,7 +30,7 @@ public class HelloController {
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Custom Login Form");
+		model.addObject("title", "Sample Secured page");
 		model.addObject("message", "This is protected page!");
 		model.setViewName("admin");
 
