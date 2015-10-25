@@ -1,10 +1,12 @@
 package org.audt4j.demo.spring.service.impl;
 
+import org.audit4j.core.annotation.Audit;
 import org.audt4j.demo.spring.model.User;
 import org.audt4j.demo.spring.service.UserService;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("userService")
+@Service("userService")
+@Audit
 public class UserServiceImpl implements UserService{
 
     @Override
@@ -14,6 +16,6 @@ public class UserServiceImpl implements UserService{
     
     @Override
     public User getUserByuserName(String userName){
-        return new User();
+        return new User("asd");
     }
 }

@@ -1,5 +1,8 @@
 package org.audt4j.demo.spring.web.controller;
 
+import org.audt4j.demo.spring.model.User;
+import org.audt4j.demo.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
 
+    @Autowired
+    private UserService userService;
+    
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
@@ -32,10 +38,12 @@ public class HelloController {
 
 	}
 
+	//@Audit
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {
 
+	    userService.saveUser(new User("asdd"));
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", "Invalid username and password!");

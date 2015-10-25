@@ -46,6 +46,14 @@
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
+
+		<!-- Audit4j -->
+		<audit4j.version>2.4.0-alpha3</audit4j.version>
+		<audit4j-spring.version>2.4.0-alpha3</audit4j-spring.version>
+		<audit4j-db.version>2.4.0-alpha1</audit4j-db.version>
+
+		<!-- AOP -->
+		<aspectj.version>1.8.4</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -55,6 +63,23 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
 			<scope>provider</scope>
+		</dependency>
+
+		<!-- Audit4j Dependencies -->
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-core</artifactId>
+			<version>${audit4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-spring</artifactId>
+			<version>${audit4j-spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-db</artifactId>
+			<version>${audit4j-db.version}</version>
 		</dependency>
 
 		<!-- Spring 3 dependencies -->
@@ -96,6 +121,17 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -120,6 +156,15 @@
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
 					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<httpConnector>
+						<port>8091</port>
+					</httpConnector>
 				</configuration>
 			</plugin>
 

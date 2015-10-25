@@ -10,8 +10,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "org.audt4j.demo.spring.web.*" })
-@Import({ SecurityConfig.class })
+@ComponentScan({ "org.audt4j.demo.spring.*" })
+@Import({ SecurityConfig.class, AuditConfig.class })
 public class AppConfig {
 
 	@Bean
