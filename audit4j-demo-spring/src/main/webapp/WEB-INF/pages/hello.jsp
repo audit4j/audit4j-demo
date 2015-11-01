@@ -1,8 +1,11 @@
 <%@page session="false"%>
 <html>
 <body>
-	<h1>Title : ${title}</h1>	
-	<h3>Message : ${message}</h3>
-	<a href="">Demo Page</a>	
+
+	<h3>Welcome to audit4j spring demo application</h3>
+	<h4>Please login before access the <a href="">Demo Page</a></h4>
+	
+	User: test
+	Passeord: 123
 </body>
 </html>

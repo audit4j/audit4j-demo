@@ -1,6 +1,5 @@
 package org.audt4j.demo.spring.web.controller;
 
-import org.audt4j.demo.spring.model.User;
 import org.audt4j.demo.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,48 +13,39 @@ public class HelloController {
 
     @Autowired
     private UserService userService;
-    
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
 
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Audit4j demo appilcaition");
-		model.addObject("message", "Please click below link to access demo page.");
-		model.setViewName("hello");
-		return model;
+    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+    public ModelAndView welcomePage() {
 
-	}
+        ModelAndView model = new ModelAndView();
+        model.setViewName("hello");
+        return model;
+    }
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
+    @RequestMapping(value = "/demo**", method = RequestMethod.GET)
+    public ModelAndView adminPage() {
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Sample Secured page");
+        model.addObject("message", "This is protected page!");
+        model.setViewName("demo");
+        return model;
+    }
 
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Sample Secured page");
-		model.addObject("message", "This is protected page!");
-		model.setViewName("admin");
+    // @Audit
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout) {
+        userService.login("test", "123");
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", "Invalid username and password!");
+        }
 
-		return model;
-
-	}
-
-	//@Audit
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
-
-	    userService.saveUser(new User("asdd"));
-		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		}
-
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		}
-		model.setViewName("login");
-
-		return model;
-
-	}
+        if (logout != null) {
+            model.addObject("msg", "You've been logged out successfully.");
+        }
+        model.setViewName("login");
+        return model;
+    }
 
 }
