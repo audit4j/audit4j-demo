@@ -6,7 +6,7 @@
 	<groupId>org.audit4j</groupId>
 	<artifactId>audit4j-demo-spring</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Audit4j Spring demo - Spring security</name>
 	<url>http://audit4j.org</url>
 	<organization>
@@ -24,7 +24,7 @@
 		<connection>scm:git:git@github.com:audit4j/audit4j-demo.git</connection>
 		<developerConnection>scm:git:git@github.com:audit4j/audit4j-demo.git</developerConnection>
 		<url>scm:git:git@github.com:audit4j/audit4j-demo.git</url>
-		<tag>v2.3.0</tag>
+		<tag>v1.0.0</tag>
 	</scm>
 	<developers>
 		<developer>
@@ -40,17 +40,18 @@
 			<timezone>+05:30</timezone>
 		</developer>
 	</developers>
-	<properties>
+	<properties> 
+	
+		<!-- Audit4j -->
+		<audit4j.version>2.4.0-alpha3</audit4j.version>
+		<audit4j-spring.version>2.4.0-alpha4</audit4j-spring.version>
+		<audit4j-db.version>2.4.0-alpha1</audit4j-db.version>
+		
 		<jdk.version>1.7</jdk.version>
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
-
-		<!-- Audit4j -->
-		<audit4j.version>2.4.0-alpha3</audit4j.version>
-		<audit4j-spring.version>2.4.0-alpha3</audit4j-spring.version>
-		<audit4j-db.version>2.4.0-alpha1</audit4j-db.version>
 
 		<!-- AOP -->
 		<aspectj.version>1.8.4</aspectj.version>
