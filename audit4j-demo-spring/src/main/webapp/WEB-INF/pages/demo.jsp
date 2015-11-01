@@ -18,6 +18,14 @@
 		}
 	</script>
 
+
+	<c:if test="${pageContext.request.userPrincipal.name != null}">
+		<h4 align="right">
+			Welcome : ${pageContext.request.userPrincipal.name} | <a
+				href="javascript:formSubmit()"> Logout</a>
+		</h4>
+	</c:if>
+	
 	<h3>Test Without Annotation</h3>
 	<p>
 		Please see <a
@@ -181,12 +189,7 @@
 	<br />
 	
 	
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h4 align="right">
-			Welcome : ${pageContext.request.userPrincipal.name} | <a
-				href="javascript:formSubmit()"> Logout</a>
-		</h4>
-	</c:if>
+
 	
 	
 	

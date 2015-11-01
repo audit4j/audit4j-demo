@@ -23,6 +23,9 @@ public class AuditConfig {
         return auditAspect;
     }
 
+    // If you want to load configurations from file
+    // (resources/audit4j.conf.yaml),
+    // comment below method
     @Bean
     public DatabaseAuditHandler databaseHandler() {
         DatabaseAuditHandler dbHandler = new DatabaseAuditHandler();
@@ -30,7 +33,7 @@ public class AuditConfig {
         return dbHandler;
     }
 
-    // If you want to laod configurations from file
+    // If you want to load configurations from file
     // (resources/audit4j.conf.yaml),
     // comment below method
     @Bean
