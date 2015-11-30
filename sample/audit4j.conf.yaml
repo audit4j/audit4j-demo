@@ -1,0 +1,11 @@
+!Configuration
+handlers: 
+- !org.audit4j.handler.db.DatabaseAuditHandler
+   db_connection_type: POOLED
+   db_password: root
+   db_url: jdbc:mysql://127.0.0.1:3306/myDB
+   db_user: root
+   embedded: false
+- !org.audit4j.core.handler.ConsoleAuditHandler {}
+layout: !org.audit4j.core.layout.SimpleLayout {}
+metaData: !org.audit4j.core.DummyMetaData {}
