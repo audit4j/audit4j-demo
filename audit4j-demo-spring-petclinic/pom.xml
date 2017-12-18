@@ -21,7 +21,7 @@
 		<spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
 
 		<!-- Audit4j -->
-		<audit4j.version>2.3.1</audit4j.version>
+		<audit4j.version>2.4.1</audit4j.version>
 
 		<!-- Java EE / Java SE dependencies -->
 		<jsp.version>2.2</jsp.version>
@@ -77,6 +77,12 @@
 			<groupId>org.audit4j</groupId>
 			<artifactId>audit4j-core</artifactId>
 			<version>${audit4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.audit4j</groupId>
@@ -453,7 +459,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.0</version>
+				<version>2.2</version>
 				<configuration>
 					<server>tomcat-development-server</server>
 					<port>9966</port>
