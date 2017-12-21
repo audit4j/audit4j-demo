@@ -21,7 +21,8 @@
 		<spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
 
 		<!-- Audit4j -->
-		<audit4j.version>2.4.1</audit4j.version>
+		<audit4j.version>2.5.0</audit4j.version>
+		<audit4jdb.version>2.4.1</audit4jdb.version>
 
 		<!-- Java EE / Java SE dependencies -->
 		<jsp.version>2.2</jsp.version>
@@ -87,7 +88,7 @@
 		<dependency>
 			<groupId>org.audit4j</groupId>
 			<artifactId>audit4j-db</artifactId>
-			<version>${audit4j.version}</version>
+			<version>${audit4jdb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.audit4j</groupId>

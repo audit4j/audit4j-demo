@@ -38,6 +38,10 @@
 		</developer>
 	</developers>
 	
+	<properties>
+		<audit4j.version>2.5.0</audit4j.version>
+	</properties>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -73,12 +77,12 @@
 		<dependency>
 			<groupId>org.audit4j</groupId>
 			<artifactId>audit4j-core</artifactId>
-			<version>2.5.0</version>
+			<version>${audit4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.audit4j</groupId>
 			<artifactId>audit4j-spring</artifactId>
-			<version>2.5.0</version>
+			<version>${audit4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
