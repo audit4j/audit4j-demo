@@ -4,4 +4,4 @@ jdk:
  - oraclejdk8
   - openjdk7
    
-   script: cd audit4j-demo-spring-petclinic && mvn clean package
+script: cd audit4j-demo-spring-petclinic && mvn clean package
