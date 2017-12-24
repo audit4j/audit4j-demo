@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/audit4j/audit4j-demo.svg?branch=master)](https://travis-ci.org/audit4j/audit4j-demo) 
+
 # audit4j-demo
 Sample audit4j applications.
 
