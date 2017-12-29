@@ -75,7 +75,6 @@ public class CallMonitoringAspect {
 
     @Around("within(@org.springframework.stereotype.Repository *)")
     public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("dfddf");
         if (this.enabled) {
             StopWatch sw = new StopWatch(joinPoint.toShortString());
 

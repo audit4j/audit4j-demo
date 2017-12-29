@@ -43,10 +43,17 @@
 	<properties>
 
 		<!-- Audit4j -->
+<<<<<<< HEAD
 		<audit4j.version>2.5.0-SNAPSHOT</audit4j.version>
 		<audit4j-spring.version>2.4.1</audit4j-spring.version>
 		<audit4j-db.version>2.4.0-alpha1</audit4j-db.version>
 
+=======
+		<audit4j.version>2.5.0</audit4j.version>
+		<audit4j-db.version>2.4.1</audit4j-db.version>
+		
+		<jdk.version>1.7</jdk.version>
+>>>>>>> 6588c9a4ab864ca5dc934c7089ce2697d10ed55b
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
@@ -74,7 +81,7 @@
 		<dependency>
 			<groupId>org.audit4j</groupId>
 			<artifactId>audit4j-spring</artifactId>
-			<version>${audit4j-spring.version}</version>
+			<version>${audit4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.audit4j</groupId>
