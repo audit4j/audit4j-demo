@@ -49,7 +49,7 @@ public class AuditDemoController {
     
     @RequestMapping(value = "/testMethodAnnotationMarked", method = RequestMethod.GET)
     public String testMethodAnnotationMarked() {
-        List<Item> items = new ArrayList<>();
+        List<Item> items = new ArrayList<Item>();
         items.add(new Item("Iphone6", 600.5));
 
         paymentService.savePayment("john", items);

@@ -1,4 +1,4 @@
-package org.audt4j.demo.spring.config;
+package org.audt4j.demo.hibernate.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,21 +7,12 @@ import org.audit4j.core.handler.ConsoleAuditHandler;
 import org.audit4j.core.handler.Handler;
 import org.audit4j.core.layout.SimpleLayout;
 import org.audit4j.handler.db.DatabaseAuditHandler;
-import org.audit4j.integration.spring.AuditAspect;
 import org.audit4j.integration.spring.SpringAudit4jConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@EnableAspectJAutoProxy
 public class AuditConfig {
-
-/*    @Bean
-    public AuditAspect auditAspect() {
-        AuditAspect auditAspect = new AuditAspect();
-        return auditAspect;
-    }*/
 
     // If you want to load configurations from file
     // (resources/audit4j.conf.yaml),
@@ -46,7 +37,6 @@ public class AuditConfig {
         handlers.add(databaseHandler());
         springAudit4jConfig.setHandlers(handlers);
         springAudit4jConfig.setMetaData(new AuditMetaData());
-        springAudit4jConfig.setCommands("-codeGen=true");
         return springAudit4jConfig;
     }
 

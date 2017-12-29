@@ -4,10 +4,10 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.audit4j</groupId>
-	<artifactId>audit4j-demo-spring</artifactId>
+	<artifactId>audit4j-demo-hibernate</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Audit4j Spring demo - Spring security</name>
+	<name>Audit4j Hibernate demo</name>
 	<url>http://audit4j.org</url>
 	<organization>
 		<name>Audit4j</name>
@@ -43,10 +43,11 @@
 	<properties>
 
 		<!-- Audit4j -->
-		<audit4j.version>2.5.0-SNAPSHOT</audit4j.version>
-		<audit4j-spring.version>2.4.1</audit4j-spring.version>
+		<audit4j.version>2.5.0</audit4j.version>
+		<audit4j-spring.version>2.5.0</audit4j-spring.version>
 		<audit4j-db.version>2.4.0-alpha1</audit4j-db.version>
 
+		<jdk.version>1.7</jdk.version>
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
@@ -54,6 +55,17 @@
 
 		<!-- AOP -->
 		<aspectj.version>1.8.4</aspectj.version>
+
+		<!-- Hibernate -->
+		<HikariCP.version>2.3.6</HikariCP.version>
+		<logback.version>1.1.3</logback.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
+		<hibernate.version>4.3.8.Final</hibernate.version>
+		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+		<hibernate.commons.annotations.version>4.0.5.Final</hibernate.commons.annotations.version>
+		<hibernate.jpa2.version>1.0.1.Final</hibernate.jpa2.version>
+		<hibernate.jpa.2.0.api.version>1.0.1.Final</hibernate.jpa.2.0.api.version>
+		<javax.validation.version>1.0.0.GA</javax.validation.version>
 	</properties>
 
 	<dependencies>
@@ -62,7 +74,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
-			<scope>provider</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Audit4j Dependencies -->
@@ -100,6 +112,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
 		<!-- Spring Security -->
 		<dependency>
@@ -112,6 +129,59 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP-java6</artifactId>
+			<version>${HikariCP.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.common</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>${hibernate.commons.annotations.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>${hibernate.jpa2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax.validation.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
 		</dependency>
 
 		<!-- jstl for jsp page -->
@@ -135,19 +205,16 @@
 	</dependencies>
 
 	<build>
+		<finalName>SpringSecurityHelloWorld</finalName>
 		<plugins>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
-
-			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
 				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
 
@@ -164,6 +231,7 @@
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.3.0.M1</version>
 				<configuration>
 					<httpConnector>
 						<port>8091</port>
