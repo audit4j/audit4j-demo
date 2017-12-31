@@ -41,12 +41,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.4.RELEASE</version>
+		<version>1.5.9.RELEASE</version>
 	</parent>
 
 
 	<properties>
-		<audit4j.version>2.5.0</audit4j.version>
 		<kotlin.version>1.1.60</kotlin.version>
 
 		<!-- Generic properties -->
@@ -63,9 +62,44 @@
 
 		<cobertura.version>2.7</cobertura.version>
 
+		<!-- Audit4j -->
+		<audit4j.version>2.5.0</audit4j.version>
+		<audit4jdb.version>2.4.1</audit4jdb.version>
+
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-core</artifactId>
+			<version>${audit4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-db</artifactId>
+			<version>${audit4jdb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.audit4j</groupId>
+			<artifactId>audit4j-spring</artifactId>
+			<version>${audit4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- Spring and Spring Boot dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -152,7 +186,7 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib-jre8</artifactId>
@@ -167,6 +201,11 @@
 			<groupId>io.github.microutils</groupId>
 			<artifactId>kotlin-logging</artifactId>
 			<version>1.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-maven-allopen</artifactId>
+			<version>${kotlin.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -197,22 +236,42 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>${cobertura.version}</version>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<version>${kotlin.version}</version>
 				<configuration>
-					<check />
+					<compilerPlugins>
+						<plugin>all-open</plugin>
+					</compilerPlugins>
+					<pluginOptions>
+						<option>all-open:annotation=org.springframework.boot.autoconfigure.SpringBootApplication</option>
+						<option>all-open:annotation=org.springframework.context.annotation.Bean</option>
+					</pluginOptions>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+				</dependencies>
 				<executions>
 					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
 						<goals>
-							<goal>clean</goal>
-							<goal>check</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>test-compile</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- Spring Boot Actuator displays build-related information if a git.properties 
 				file is present at the classpath -->
 			<plugin>

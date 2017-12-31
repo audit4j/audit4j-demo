@@ -1,21 +1,22 @@
 package org.springframework.samples.petclinic.owner
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
+import org.audit4j.core.AuditManager
+import org.audit4j.core.dto.AuditEvent
+import org.audit4j.core.dto.Field
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
+import org.springframework.web.bind.WebDataBinder
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.InitBinder
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.servlet.ModelAndView
+import javax.validation.Valid
 
 
 @Controller
-class OwnerController(val owners: OwnerRepository) {
+open class OwnerController(val owners: OwnerRepository) {
 
 	val VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm"
 
@@ -40,15 +41,19 @@ class OwnerController(val owners: OwnerRepository) {
         }
     }
 
+	
     @GetMapping("/owners/find")
     fun initFindForm(model: MutableMap<String, Any>) : String {
         model.put("owner", Owner());
         return "owners/findOwners";
     }
 
+	//@Audit
     @GetMapping("/owners")
-    fun processFindForm(owner: Owner, result: BindingResult, model : MutableMap<String, Any>) : String {
+    open fun processFindForm(owner: Owner, result: BindingResult, model : MutableMap<String, Any>) : String {
 
+		var manager = AuditManager.getInstance();
+		manager.audit(AuditEvent("the actor", "myMethod", Field("lastname", owner.lastName)))
         // find owners by last name
         val results = this.owners.findByLastName(owner.lastName);
         if (results.isEmpty()) {
