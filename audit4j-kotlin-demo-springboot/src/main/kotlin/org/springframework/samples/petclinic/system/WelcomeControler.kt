@@ -1,12 +1,14 @@
 package org.springframework.samples.petclinic.system
 
 
+import org.audit4j.core.annotation.Audit
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
-class WelcomeController {
+open class WelcomeController {
 
+	@Audit
     @GetMapping("/")
-    fun welcome() = "welcome"
+    open fun welcome() = "welcome"
 }
