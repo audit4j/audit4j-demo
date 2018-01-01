@@ -1,6 +1,8 @@
 package org.springframework.samples.petclinic.owner
 
 import org.audit4j.core.AuditManager
+import org.audit4j.core.annotation.Audit
+import org.audit4j.core.annotation.IgnoreAudit
 import org.audit4j.core.dto.AuditEvent
 import org.audit4j.core.dto.Field
 import org.springframework.stereotype.Controller
@@ -48,12 +50,12 @@ open class OwnerController(val owners: OwnerRepository) {
         return "owners/findOwners";
     }
 
-	//@Audit
+	@Audit
     @GetMapping("/owners")
-    open fun processFindForm(owner: Owner, result: BindingResult, model : MutableMap<String, Any>) : String {
+    open fun processFindForm(owner: Owner, @IgnoreAudit result: BindingResult, @IgnoreAudit model : MutableMap<String, Any>) : String {
 
-		var manager = AuditManager.getInstance();
-		manager.audit(AuditEvent("the actor", "myMethod", Field("lastname", owner.lastName)))
+		//var manager = AuditManager.getInstance();
+		//manager.audit(AuditEvent("the actor", "myMethod", Field("lastname", owner.lastName)))
         // find owners by last name
         val results = this.owners.findByLastName(owner.lastName);
         if (results.isEmpty()) {
