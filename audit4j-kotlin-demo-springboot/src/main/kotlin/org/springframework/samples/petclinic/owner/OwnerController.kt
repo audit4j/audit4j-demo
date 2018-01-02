@@ -38,7 +38,7 @@ open class OwnerController(val owners: OwnerRepository) {
         if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM
         } else {
-            this.owners.save(owner);
+            owners.save(owner);
             return "redirect:/owners/" + owner.id;
         }
     }
@@ -97,10 +97,9 @@ open class OwnerController(val owners: OwnerRepository) {
      * @return a ModelMap with the model attributes for the view
      */
     @GetMapping("/owners/{ownerId}")
-    fun showOwner(@PathVariable("ownerId") ownerId : Int) : ModelAndView {
-        var mav = ModelAndView("owners/ownerDetails");
-        mav.addObject(this.owners.findById(ownerId));
-        return mav;
-    }
+    fun showOwner(@PathVariable("ownerId") ownerId : Int, model: Model): String {
+        model.addAttribute(this.owners.findById(ownerId))
+        return "owners/ownerDetails"
+}
 
 }
