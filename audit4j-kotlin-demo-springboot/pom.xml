@@ -330,9 +330,9 @@
 				<groupId>org.jetbrains.kotlin</groupId>
 				<version>${kotlin.version}</version>
 				<configuration>
-					<compilerPlugins>
+					<!-- compilerPlugins>
 						<plugin>spring</plugin>
-					</compilerPlugins>
+					</compilerPlugins-->
 					<jvmTarget>1.8</jvmTarget>
 				</configuration>
 				<executions>
