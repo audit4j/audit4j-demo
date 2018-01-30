@@ -1,0 +1,21 @@
+!Configuration # Mandatory
+ 
+# Configure handlers, One or more handlers must be configured.
+handlers:
+- !org.audit4j.handler.db.DatabaseAuditHandler 
+   embedded: false
+   db_connection_type: pooled
+   db_driver: org.h2.Driver
+   db_url: jdbc:h2:tcp://localhost/~/stackoverflow
+   db_user: sa
+   db_password: 
+   db_datasourceClass: org.h2.jdbcx.JdbcDataSource
+ 
+# Configure handlers, Either one handler must be configured.
+layout: !org.audit4j.core.layout.SimpleLayout {}
+ 
+# Configure meta data.
+metaData: !org.audit4j.core.DummyMetaData {}
+
+commands: -batchSize=4
+ 

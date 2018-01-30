@@ -1,0 +1,16 @@
+!Configuration # Mandatory
+ 
+# Configure handlers, One or more handlers must be configured.
+handlers:
+- !org.audit4j.core.handler.file.FileAuditHandler {}
+ 
+# Configure handlers, Either one handler must be configured.
+layout: !org.audit4j.core.layout.SimpleLayout {}
+ 
+# Configure meta data.
+metaData: !org.audit4j.core.DummyMetaData {}
+
+# Configure additional properties.
+properties:
+   log.file.location: user.dir
+ 

@@ -4,6 +4,7 @@ jdk:
  - oraclejdk8
   - openjdk7
    
-script: cd audit4j-demo-spring-petclinic && mvn clean package  && cd ../audit4j-demo-springboot && mvn clean package && cd ../audit4j-kotlin-demo-springboot && mvn clean package
+script: cd audit4j-demo-spring-petclinic && mvn clean package  && cd ../audit4j-demo-springboot && mvn clean package && cd ../audit4j-kotlin-demo-springboot && mvn clean package && cd ../audit4j-integration-tests && mvn clean package
+
 
 
