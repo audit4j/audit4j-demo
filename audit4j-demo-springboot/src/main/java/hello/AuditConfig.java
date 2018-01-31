@@ -78,9 +78,11 @@ public class AuditConfig {
     
     private Layout getLayout() {
     	
-    	CustomizableLayout layout = new CustomizableLayout();
-    	layout.setTemplate("${eventDate}|${uuid}|actor=${actor}|${action}|origin=${origin} => ${foreach fields field}${field.name} ${field.type}:${field.value}, ${end}");
-    	return layout;
+    	//CustomizableLayout layout = new CustomizableLayout();
+    	//layout.setTemplate("${eventDate}|${uuid}|actor=${actor}|${action}|origin=${origin} => ${foreach fields field}${field.name} ${field.type}:${field.value}, ${end}");
+    	//return layout;
+    	
+    	return new SimpleLayout();
     }
 
 }

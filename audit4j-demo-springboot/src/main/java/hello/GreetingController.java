@@ -1,6 +1,7 @@
 package hello;
 
 import org.audit4j.core.annotation.Audit;
+import org.audit4j.core.annotation.AuditField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,18 @@ public class GreetingController {
     	LOGGER.info("hello called");
         return "hello";
     }
+
+	@Audit
+	public void foo1(@AuditField(field="stringOne") String string1, @AuditField(field="stringTwo") String string2) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Audit
+	public void foo2(String string1, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
     
 
 }
