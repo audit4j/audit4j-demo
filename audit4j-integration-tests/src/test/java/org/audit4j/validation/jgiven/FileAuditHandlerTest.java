@@ -14,7 +14,7 @@ import org.junit.rules.TemporaryFolder;
 
 import com.tngtech.jgiven.junit.ScenarioTest;
 
-public class FileAuditHandlerJGivenTest extends ScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
+public class FileAuditHandlerTest extends ScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
 
 	@Rule
 	public TemporaryFolder folder = new TemporaryFolder();

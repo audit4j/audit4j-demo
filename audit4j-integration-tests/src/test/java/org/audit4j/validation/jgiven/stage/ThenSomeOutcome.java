@@ -16,6 +16,7 @@ import org.audit4j.validation.jgiven.util.TesterUtil;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.annotation.Hidden;
 import com.tngtech.jgiven.annotation.Quoted;
 
@@ -49,6 +50,7 @@ public class ThenSomeOutcome extends Stage<ThenSomeOutcome> {
 		return self();	
 	}
 
+	@As( "the file log contains $ line" )
 	public ThenSomeOutcome the_file_log_contains_$_line(int nbLines, @Hidden String path) throws IOException {
 		
 		assertEquals(nbLines, getTempFileContent(path).size());

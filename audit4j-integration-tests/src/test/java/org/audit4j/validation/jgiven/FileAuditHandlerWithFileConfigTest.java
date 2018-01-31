@@ -17,7 +17,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import com.tngtech.jgiven.junit.ScenarioTest;
 
-public class FileAuditHandlerWithFileConfigJGivenTest extends ScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
+public class FileAuditHandlerWithFileConfigTest extends ScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
 
 
     @Rule

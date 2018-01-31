@@ -14,7 +14,7 @@ import org.junit.rules.TemporaryFolder;
 
 import com.tngtech.jgiven.junit.ScenarioTest;
 
-public class CombinedConsoleAndFileAuditHandlerJGivenTest 
+public class CombinedConsoleAndFileAuditHandlerTest 
 	extends ScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
 	
     @Rule
