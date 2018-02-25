@@ -1,0 +1,14 @@
+!Configuration # Mandatory
+ 
+# Configure handlers, One or more handlers must be configured.
+handlers:
+- !org.audit4j.core.handler.ConsoleAuditHandler {}
+ 
+# Configure handlers, Either one handler must be configured.
+layout: !org.audit4j.core.layout.CustomizableLayout
+   dateFormat: yyyy/MM/dd HH:mm:ss
+   template: ${eventDate}|${uuid}|${actor}|${action}|${origin} => ${foreach fields field}[${field.name}:${field.value}]${end}
+ 
+# Configure meta data.
+metaData: !org.audit4j.core.DummyMetaData {}
+ 

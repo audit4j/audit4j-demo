@@ -11,6 +11,7 @@ import org.audit4j.core.DummyMetaData;
 import org.audit4j.core.handler.ConsoleAuditHandler;
 import org.audit4j.core.handler.Handler;
 import org.audit4j.core.handler.file.FileAuditHandler;
+import org.audit4j.core.layout.Layout;
 import org.audit4j.core.layout.SimpleLayout;
 import org.junit.rules.TemporaryFolder;
 
@@ -69,8 +70,20 @@ public class GivenSomeState extends Stage<GivenSomeState> {
 	}
 
 
+
+	
 	public GivenSomeState audit4j_starting_with_a_programming_configuration_using_ConsoleAuditHandler() {
 		AuditManager.startWithConfiguration(getConfigurationForConsoleHandler());
+		return self();
+		
+	}
+	
+	public GivenSomeState audit4j_starting_with_a_programming_configuration_using_ConsoleAuditHandler_with_layout(Layout layout) {
+		
+		Configuration configuration = getConfigurationForConsoleHandler();
+		configuration.setLayout(layout);
+		
+		AuditManager.startWithConfiguration(configuration);
 		return self();
 		
 	}
