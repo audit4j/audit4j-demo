@@ -13,6 +13,9 @@ The users passwords are user/password and user2/password2.
 
 the following page http://localhost:8080/hello is audited.
 
+## Audit4j-annotation-int
+Simple example showing how to integrate the @Audit annotation using aspectj.
+
 ## Audit4j-kotlin-demo-springboot
 example showing the usage of audit4j with Kotlin "Petclinic" application
 
