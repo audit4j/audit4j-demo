@@ -19,7 +19,6 @@ import java.util.Collection;
 
 import org.audit4j.core.annotation.Audit;
 import org.audit4j.core.annotation.AuditField;
-import org.audit4j.core.annotation.SelectionType;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -37,25 +36,25 @@ public interface ClinicService {
 
     Collection<PetType> findPetTypes() throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     Owner findOwnerById(@AuditField(field = "id") int id) throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     Pet findPetById(@AuditField(field = "id")int id) throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     void savePet(@AuditField(field = "pet") Pet pet) throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     void saveVisit(@AuditField(field = "visit") Visit visit) throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     Collection<Vet> findVets() throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     void saveOwner(@AuditField(field = "owener") Owner owner) throws DataAccessException;
 
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     Collection<Owner> findOwnerByLastName(@AuditField(field = "lastName") String lastName) throws DataAccessException;
 
 }

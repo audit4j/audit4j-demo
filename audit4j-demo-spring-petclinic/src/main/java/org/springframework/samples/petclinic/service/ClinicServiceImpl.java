@@ -19,7 +19,6 @@ import java.util.Collection;
 
 import org.audit4j.core.annotation.Audit;
 import org.audit4j.core.annotation.AuditField;
-import org.audit4j.core.annotation.SelectionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -71,7 +70,7 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional(readOnly = true)
-    @Audit(selection=SelectionType.MARKED)
+    @Audit
     public Collection<Owner> findOwnerByLastName(@AuditField(field = "id") String lastName) throws DataAccessException {
         return ownerRepository.findByLastName(lastName);
     }
